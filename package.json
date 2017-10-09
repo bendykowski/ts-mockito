@@ -49,6 +49,7 @@
       "js",
       "json"
     ],
+    "mapCoverage": false,
     "collectCoverage": true,
     "coverageReporters": [
       "html",
