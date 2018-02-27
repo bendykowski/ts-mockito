@@ -11,6 +11,7 @@ import {
     ArgCaptor8,
     ArgCaptor9,
 } from "./capture/ArgCaptor";
+import {NotOperator} from "./matcher/operator/NotOperator";
 import {AnyFunctionMatcher} from "./matcher/type/AnyFunctionMatcher";
 import {AnyNumberMatcher} from "./matcher/type/AnyNumberMatcher";
 import {AnyOfClassMatcher} from "./matcher/type/AnyOfClassMatcher";
@@ -18,9 +19,9 @@ import {AnyStringMatcher} from "./matcher/type/AnyStringMatcher";
 import {AnythingMatcher} from "./matcher/type/AnythingMatcher";
 import {BetweenMatcher} from "./matcher/type/BetweenMatcher";
 import {DeepEqualMatcher} from "./matcher/type/DeepEqualMatcher";
+import {IsNullMatcher} from "./matcher/type/IsNullMatcher";
 import {MatchMatcher} from "./matcher/type/MatchMatcher";
 import {NotNullMatcher} from "./matcher/type/NotNullMatcher";
-import {NotOperator} from "./matcher/type/NotOperator";
 import {ObjectContainingMatcher} from "./matcher/type/ObjectContainingMatcher";
 import {StrictEqualMatcher} from "./matcher/type/StrictEqualMatcher";
 import {MethodStubSetter} from "./MethodStubSetter";
@@ -107,6 +108,10 @@ export function deepEqual(expectedValue: any): any {
     return new DeepEqualMatcher(expectedValue);
 }
 
+export function isNull(): any {
+    return new IsNullMatcher();
+}
+
 export function notNull(): any {
     return new NotNullMatcher() as any;
 }
@@ -144,6 +149,7 @@ export default {
     anything,
     between,
     deepEqual,
+    isNull,
     notNull,
     strictEqual,
     match,
