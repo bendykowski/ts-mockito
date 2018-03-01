@@ -20,6 +20,7 @@ import {AnythingMatcher} from "./matcher/type/AnythingMatcher";
 import {BetweenMatcher} from "./matcher/type/BetweenMatcher";
 import {DeepEqualMatcher} from "./matcher/type/DeepEqualMatcher";
 import {IsNullMatcher} from "./matcher/type/IsNullMatcher";
+import {Matcher} from "./matcher/type/Matcher";
 import {MatchMatcher} from "./matcher/type/MatchMatcher";
 import {NotNullMatcher} from "./matcher/type/NotNullMatcher";
 import {ObjectContainingMatcher} from "./matcher/type/ObjectContainingMatcher";
@@ -80,51 +81,51 @@ export function resetCalls<T>(mockedValue: T): void {
     (mockedValue as any).__tsmockitoMocker.resetCalls();
 }
 
-export function anyOfClass<T>(expectedClass: {new (...args: any[]): T}): any {
+export function anyOfClass<T>(expectedClass: {new (...args: any[]): T}): Matcher | any {
     return new AnyOfClassMatcher(expectedClass) as any;
 }
 
-export function anyFunction(): any {
+export function anyFunction(): AnyFunctionMatcher | any {
     return new AnyFunctionMatcher() as any;
 }
 
-export function anyNumber(): any {
+export function anyNumber(): AnyNumberMatcher | any {
     return new AnyNumberMatcher() as any;
 }
 
-export function anyString(): any {
+export function anyString(): AnyStringMatcher | any {
     return new AnyStringMatcher() as any;
 }
 
-export function anything(): any {
+export function anything(): AnythingMatcher | any {
     return new AnythingMatcher() as any;
 }
 
-export function between(min: number, max: number): any {
+export function between(min: number, max: number): BetweenMatcher | any {
     return new BetweenMatcher(min, max) as any;
 }
 
-export function deepEqual(expectedValue: any): any {
+export function deepEqual(expectedValue: any): DeepEqualMatcher | any {
     return new DeepEqualMatcher(expectedValue);
 }
 
-export function isNull(): any {
+export function isNull(): IsNullMatcher | any {
     return new IsNullMatcher();
 }
 
-export function notNull(): any {
+export function notNull(): NotNullMatcher | any {
     return new NotNullMatcher() as any;
 }
 
-export function strictEqual(expectedValue: any): any {
+export function strictEqual(expectedValue: any): StrictEqualMatcher | any {
     return new StrictEqualMatcher(expectedValue);
 }
 
-export function match(expectedValue: RegExp | string): any {
+export function match(expectedValue: RegExp | string): MatchMatcher | any {
     return new MatchMatcher(expectedValue);
 }
 
-export function objectContaining(expectedValue: Object): any {
+export function objectContaining(expectedValue: Object): ObjectContainingMatcher | any {
     return new ObjectContainingMatcher(expectedValue);
 }
 
